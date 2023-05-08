@@ -1,7 +1,29 @@
-// Créer un événément au scroll
+// On pointe la navbar dans le HTML :
+const navBar = document.getElementById("navbar");
+// (pas obligatoire car les id sont deja reconnu dans JS)
 
-// Cacher la navbar si l'utilisateur comment à descendre et la sortir quand il remonte
+// On stock la valeur du dernier scroll dans une variable :
+let lastScroll = 0;
 
-// Stocker la valeur du précédent niveau de scroll pour savoir si l'on est monté ou descendu
+// Evénément au scroll :
+window.addEventListener("scroll", () => {
+  if (window.scrollY < lastScroll) {
+    displayNavBar();
+  } else {
+    hideNavBar();
+  }
+  lastScroll = window.scrollY;
+});
 
-// Connaitre niveau de scroll (window.scrollY)
+// Le contenu des fonction aurait pu etre directement écrit
+// dans l'evenlistener du scroll ..
+
+// Afficher la navbar :
+function displayNavBar() {
+  navBar.style.top = "0";
+}
+
+// Cahcher la navbar :
+function hideNavBar() {
+  navBar.style.top = "-60px";
+}
